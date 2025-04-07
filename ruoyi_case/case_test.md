@@ -1,4 +1,4 @@
-# Case1 con:6  有漏洞
+# Case1 con:6  有漏洞  yes
 水平越权漏洞：
 在src/main/java/com/ruoyi/quartz/controller/SysJobLogController.java的86，87行，/monitor/job/detail/{jobLogId}的detail方法中
 通过修改jobLogId可以查看别人的任务详细，流程如下：
@@ -18,7 +18,7 @@
 
 ![alt text](image/image-3.png)
 
-# Case2 con:11 有漏洞
+# Case2 con:11 有漏洞  yes
 水平越权漏洞：
 在src/main/java/com/ruoyi/quartz/controller/SysJobController.java的83，84行，/monitor/job/detail/{jobId}的detail方法中
 通过修改jobId可以查看别人的调度日志，流程如下：
@@ -65,7 +65,7 @@ forward之后会在页面展示代码生成列表
 
 如果代码生成列表信息比较敏感的话会是垂直越权漏洞
 
-# Case5 con:30  有漏洞
+# Case5 con:30  有漏洞  yes  (no)
 水平越权漏洞：
 在src/main/java/com/ruoyi/quartz/controller/SysJobController.java的169,170行，/monitor/job/edit/{jobId}的edit方法中
 通过修改jobId可以更改别的任务的信息，流程如下：
@@ -82,8 +82,8 @@ forward之后会在页面展示代码生成列表
 3.发现任务二的名字变为了test
 
 ![alt text](image/image-11.png)
-
-# Case6 con:34  有漏洞
+ 
+# Case6 con:34  有漏洞  yes
 在src/main/java/com/ruoyi/web/controller/system/SysUserController.java的349，350行，/selectDeptTree/{deptId}的selectDeptTree方法中，selectDeptTree用于编辑用户信息时选择部门，这应该是没问题的，如图
 1.点击修改归宿部门：
 
@@ -111,7 +111,7 @@ forward之后会在页面展示代码生成列表
 
 ![alt text](image/image-58.png)
 
-# Case7 con:38 有漏洞
+# Case7 con:38 有漏洞 yes
 垂直越权漏洞：字典存储用户信息，可以直接更改字典信息说明存在垂直越权
 水平越权漏洞：
 在src/main/java/com/ruoyi/web/controller/system/SysDictTypeController.java的98，99行，/edit/{dictId}的edit方法中，仅更改
@@ -128,7 +128,7 @@ dictId就可以编辑其他字典，流程如下：
 
 ![alt text](image/image-16.png)
 
-# Case8 con:40 有漏洞
+# Case8 con:40 有漏洞  yes
 在src/main/java/com/ruoyi/web/controller/system/SysMenuController.java的82行，/add/{parentId}的add方法中，修改parentId就可以把该方法加入别的主目录中，流程如下：
 1.点击系统管理的新增按钮,用burp抓包，可以发现parentId为1
 
@@ -141,7 +141,7 @@ dictId就可以编辑其他字典，流程如下：
 
 ![alt text](image/image-63.png)
 
-# Case9 con:50 有漏洞
+# Case9 con:50 有漏洞 yes
 垂直越权漏洞：可以直接更改菜单信息说明存在垂直越权
 水平越权漏洞：
 在src/main/java/com/ruoyi/web/controller/system/SysMenuController.java的121，122行，/edit/{menuId}的edit方法中，仅修改menuId就可以修改别的菜单的信息，流程如下：
@@ -171,7 +171,7 @@ forward之后会在页面展示job列表
 
 如果job信息比较敏感的话会是垂直越权漏洞
 
-# Case11 con:54 有漏洞
+# Case11 con:54 有漏洞  yes
 垂直越权漏洞：可以直接更改岗位信息说明存在垂直越权
 水平越权漏洞：
 在src/main/java/com/ruoyi/web/controller/system/SysPostController.java的109，110行，/edit/{postId}的edit方法中，仅修改postId就可以修改别的岗位的信息，流程如下：
@@ -189,7 +189,7 @@ forward之后会在页面展示job列表
 
 ![alt text](image/image-26.png)
 
-# Case12 con:58 有漏洞
+# Case12 con:58 有漏洞  yes
 垂直越权漏洞：
 在src/main/java/com/ruoyi/web/controller/system/SysConfigController.java的113行，editSave方法中，普通用户可以直接更改config信息说明存在垂直越权
 原本config如下：
@@ -200,7 +200,7 @@ forward之后会在页面展示job列表
 
 ![alt text](image/image-27.png)
 
-# Case13 con:64 有漏洞
+# Case13 con:64 有漏洞 yes
 在src/main/java/com/ruoyi/quartz/controller/SysJobController.java的98行，changeStatus方法存在水平越权和垂直越权漏洞
 垂直越权漏洞：普通用户可以直接修改任务状态:
 如图任务1原本为运行状态：
@@ -227,7 +227,7 @@ forward之后会在页面展示job列表
 ![alt text](image/image-45.png)
 
 
-# Case14 con:65 有漏洞
+# Case14 con:65 有漏洞  yes
 在src/main/java/com/ruoyi/quartz/controller/SysJobController.java的98行，changeStatus方法存在水平越权和垂直越权漏洞
 垂直越权漏洞：普通用户可以直接修改任务状态:
 如图任务1原本为关闭状态：
@@ -255,7 +255,7 @@ forward之后会在页面展示job列表
 ![alt text](image/image-39.png)
 
 
-# Case15 con:71 有漏洞
+# Case15 con:71 有漏洞 yes
 垂直越权漏洞：
 在src/main/java/com/ruoyi/web/controller/system/SysNoticeController.java的97行，editSave方法中，普通用户可以直接修改通知公告，说明存在垂直越权漏洞
 原本公告如下：
@@ -266,7 +266,7 @@ forward之后会在页面展示job列表
 
 ![alt text](image/image-29.png)
 
-# Case16 con:138 有漏洞
+# Case16 con:138 有漏洞  yes
 在src/main/java/com/ruoyi/web/controller/system/SysRoleController.java的271行，/authUser/cancelAll的cancelAuthUserAll方法中，普通用户可以批量取消授权用户的授权存在垂直越权漏洞
 流程如下：
 1.点击更多操作的分配用户选项，可以看到授权用户界面如图：
@@ -283,7 +283,7 @@ forward之后会在页面展示job列表
 
 ![alt text](image/image-52.png)
 
-# Case17 con:144 有漏洞
+# Case17 con:144 有漏洞 yes
 垂直越权漏洞：在src/main/java/com/ruoyi/web/controller/system/SysDictTypeController.java的112行，editSave方法中，用户可以更改字典信息，字典存储用户信息，可以直接更改字典信息说明存在垂直越权
 字典信息原本如下：
 
@@ -293,7 +293,7 @@ forward之后会在页面展示job列表
 
 ![alt text](image/image-33.png)
 
-# Case18 con:144 有漏洞
+# Case18 con:144 有漏洞 yes
 在src/main/java/com/ruoyi/generator/controller/GenController.java的174行，tool:gen:edit的editSave方法中，普通用户就可以修改代码生成业务，存在垂直越权漏洞
 流程如下：
 1.对sys_config进行编辑，原本信息如图，勾选第一行config_id的编辑，点击保存
